@@ -123,11 +123,12 @@ precision = confusionmatrix[1,1] / (confusionmatrix [1,1] + confusionmatrix[0,1]
 recall = confusionmatrix[1,1] / (confusionmatrix [1,1] + confusionmatrix[1,0])
 #F1 Score
 f1_score = 2 * (precision * recall) / (precision + recall)
-#Precision recall curve
+# Calculate precision-recall curve
 precision, recall, _ = precision_recall_curve(y_test, lr.predict_proba(x_test)[:, 1])
-#Calculated Metrics
-st.write("Precision-Recall Curve:")
-st.line-chart(pd.Dataframe({"Precision": precision [:-1], "Recall": recall[:-1]}))
+
+# Create an interactive precision-recall curve using Plotly
+fig = px.line(x=recall, y=precision, labels={"x": "Recall", "y": "Precision"}, title="Precision-Recall Curve")
+st.plotly_chart(fig)
 # %%
 
 #Q10.
@@ -140,15 +141,27 @@ features_person2 = [8, 7, 0, 1, 1, 82]
 #Reshape features to a 2D array
 features_person1 = np.array(features_person1).reshape(1, -1)
 features_person2 = np.array(features_person2).reshape(1, -1)
+st.title("Feature Visualization for Two Individuals")
 
+# Plot the radar chart
+fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
+ax.fill(angles, df_features_normalized.loc[:, 'Person 1'].values, 'b', alpha=0.1)
+ax.fill(angles, df_features_normalized.loc[:, 'Person 2'].values, 'r', alpha=0.1)
+ax.set_thetagrids(angles[:-1] * 180 / np.pi, feature_names)
+ax.set_title("Feature Comparison")
+
+# Display the radar chart in Streamlit
+st.pyplot(fig)
 #Probability Prediction
 probabilities_person1 = lr.predict_proba(features_person1)[:, 1]
 probabilities_person2 = lr.predict_proba(features_person2)[:, 1]
 
-#Probability display
-print(probabilities_person1[0])
-print(probabilities_person2[0])
+# Streamlit app
+st.title("Probability Predictions for Social Media Usage")
 
+# Display probability predictions
+st.write("Probability Prediction for Person 1:", probability_person1)
+st.write("Probability Prediction for Person 2:", probability_person2)
 
 
 
