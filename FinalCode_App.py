@@ -26,7 +26,7 @@ def clean_sm(x):
 if st.button("Clean Data"): 
     s['sm_li'] = clean_sm(s['web1h'])  # Replace 'your_existing_column' with the actual column
     st.write("Data Cleaned Successfully!", s)
-    
+s['sm_li'] = clean_sm(s['web1h'])    
 #Q3.
 import os
 import matplotlib.pyplot as plt
