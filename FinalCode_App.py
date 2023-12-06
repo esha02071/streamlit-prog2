@@ -160,8 +160,8 @@ probabilities_person2 = lr.predict_proba(features_person2)[:, 1]
 st.title("Probability Predictions for Social Media Usage")
 
 # Display probability predictions
-st.write("Probability Prediction for Person 1:", probability_person1)
-st.write("Probability Prediction for Person 2:", probability_person2)
+st.write("Probability Prediction for Person 1:", probabilities_person1)
+st.write("Probability Prediction for Person 2:", probabilities_person2)
 
 
 
