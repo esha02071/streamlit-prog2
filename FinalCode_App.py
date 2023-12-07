@@ -36,9 +36,9 @@ import seaborn as sns
 ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age', 'sm_li']].copy()
 
 
-drop1 = [98] #numeric values to drop for age
-ss = ss[~ss['age'].isin(drop1)]
-ss = ss[~ss['educ2'] <= 8]
+#numeric values to drop for age and education level
+ss = ss[~ss['age']>=98]
+ss = ss[~ss['educ2'] >= 8]
 # Dropping any missing values from the "ss" dataframe
 ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
 
