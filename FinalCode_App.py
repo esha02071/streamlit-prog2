@@ -35,7 +35,7 @@ ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age', 'sm_li']].copy()
 ss = ss[~ss['age']>=98]
 ss = ss[~ss['educ2'] >= 8]
 # Dropping any missing values from the "ss" dataframe
-ss= ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
+ ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
 
 #Streamlit App
 st.title("Exploratory Data Analysis")
@@ -43,7 +43,7 @@ st.title("Exploratory Data Analysis")
 #Display Cleaned up Data
 #Creating a Button on Streamlit to indicate data cleaning
 if st.button("Clean Data"): 
-  s['sm_li'] = clean_sm(s['web1h'])
+  print(ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True))
 st.write("Data Cleaned Successfully!", ss)
 
 # Exploratory Analysis
@@ -53,9 +53,9 @@ st.title("Pairplot for Social Media Usage")
 # Set seaborn style
 sns.set(style="ticks")
 # Add a slider for the height of the pairplot
-pairplot_height = st.slider("Pairplot Height", min_value=1.0, max_value=5.0, value=2.5, step=0.1)
+#pairplot_height = st.slider("Pairplot Height", min_value=1.0, max_value=5.0, value=2.5, step=0.1)
 # Create pairplot
-fig = sns.pairplot(ss, hue='sm_li', diag_kind="kde", markers=["o", "s"], palette="husl", height=pairplot_height)
+fig = sns.pairplot(ss, hue='sm_li', diag_kind="kde", markers=["o", "s"], palette="husl", height= 2.5)
 # Display the pairplot in Streamlit
 st.pyplot(fig)
 
@@ -94,6 +94,14 @@ y_predicted = lr.predict(x_test)
 accuracy = accuracy_score(y_test, y_predicted) #Yields accuracy score
 classificationreport = classification_report(y_test, y_predicted) #Yields a classification report
 
+
+# Logistic Regression Model Results in Streamlit App
+st.title("Logistic Regression Model Evaluation with Training Data")
+st.write("Logistic Regression Model Results:")
+st.write(f"Accuracy: {accuracy:.2f}")
+st.write("Classification Report:")
+st.text(classificationreport)
+
 # %%
 #Q7. Model evaluation with testing data
 from sklearn.metrics import confusion_matrix
@@ -104,22 +112,16 @@ print(accuracyscore)
 #Confusion Matrix generation 
 confusionmatrix = confusion_matrix(y_test, y_predicted)
 
+st.write("Confusion Matrix:")
+sns.heatmap(confusionmatrix, annot=True, fmt="d", cmap="Blues", square=True, cbar=False)
+st.pyplot()
 
 # %%
 #Q8. Creating confusion matrix  as a dataframe
 confusionmatrix_df = pd.DataFrame(confusionmatrix, columns = ['Predicted 0', 'Predicted 1'], index = ['Actual 0', 'Actual 1'])
 
 
-# Logistic Regression Model Results in Streamlit App
-st.title("Logistic Regression Model Evaluation with Training Data")
-st.write("Logistic Regression Model Results:")
-st.write(f"Accuracy: {accuracy:.2f}")
-st.write("Classification Report:")
-st.text(classificationreport)
 
-st.write("Confusion Matrix:")
-sns.heatmap(confusionmatrix, annot=True, fmt="d", cmap="Blues", square=True, cbar=False)
-st.pyplot()
 
 #Generation of ROC Curve
 fpr, tpr, _ = roc_curve(y_test, lr.predict_proba(x_test)[:, 1])
