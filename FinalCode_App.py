@@ -21,12 +21,7 @@ st.write("Data shape:", s.shape)
 #Q2.
 def clean_sm(x):
     return np.where(x==1,1,0)
-
-#Creating a Button on Streamlit to indicate data cleaning
-if st.button("Clean Data"): 
-    s['sm_li'] = clean_sm(s['web1h'])  # Replace 'your_existing_column' with the actual column
-    st.write("Data Cleaned Successfully!", s)
-s['sm_li'] = clean_sm(s['web1h'])    
+s['sm_li'] = clean_sm(s['web1h'])    #Replacing existing column with the actual column sm_li
 #Q3.
 import os
 import matplotlib.pyplot as plt
@@ -46,13 +41,18 @@ ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
 st.title("Exploratory Data Analysis")
 
 #Display Cleaned up Data
-st.write("Cleaned Data:", ss)
+#Creating a Button on Streamlit to indicate data cleaning
+if st.button("Clean Data"): 
+   ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
+    st.write("Data Cleaned Successfully!", s)
 
 # Exploratory Analysis
 # Pairplot to visualize relationships between features and the target
 sns.set(style="ticks")
-fig, ax = plt.subplots()
+#Pairplot is being created
+st.title("Pairplot for Social Media Usage")
 sns.pairplot(ss, hue='sm_li', diag_kind="kde", markers=["o", "s"], palette="husl", height=2.5)
+#Pairplot is being displayed on streamlit
 st.pyplot(fig)
 
 # %%
@@ -82,17 +82,13 @@ st.write("Shape of y_test:", y_test.shape)
 #Q6.
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
+#Logistic Regression Model Code
 lr = LogisticRegression(class_weight = 'balanced', random_state = 50)
 lr.fit(x_train, y_train)
 y_predicted = lr.predict(x_test)
-accuracy = accuracy_score(y_test, y_predicted)
-classificationreport = classification_report(y_test, y_predicted)
-st.title("Logistic Regression Model Evaluation with Training Data")
-# Model results are displayed in Streamlit App
-st.write("Logistic Regression Model Results:")
-st.write(f"Accuracy: {accuracy:.2f}")
-st.write("Classification Report:")
-st.text(classificationreport)
+#Model Evaluation
+accuracy = accuracy_score(y_test, y_predicted) #Yields accuracy score
+classificationreport = classification_report(y_test, y_predicted) #Yields a classification report
 
 # %%
 #Q7. Model evaluation with testing data
@@ -103,16 +99,40 @@ accuracyscore = accuracy_score(y_test, y_predicted)
 print(accuracyscore)
 #Confusion Matrix generation 
 confusionmatrix = confusion_matrix(y_test, y_predicted)
-st.write("Confusion Matrix:")
-sns.heatmap(confusionmatrix, annot=True, fmt="d", cmap="Blues", square=True, cbar=False)
-st.pyplot()
+
 
 # %%
 #Q8. Creating confusion matrix  as a dataframe
 confusionmatrix_df = pd.DataFrame(confusionmatrix, columns = ['Predicted 0', 'Predicted 1'], index = ['Actual 0', 'Actual 1'])
+
+
+# Logistic Regression Model Results in Streamlit App
+st.title("Logistic Regression Model Evaluation with Training Data")
+st.write("Logistic Regression Model Results:")
+st.write(f"Accuracy: {accuracy:.2f}")
+st.write("Classification Report:")
+st.text(classificationreport)
+
 st.write("Confusion Matrix:")
-sns.heatmap(confusionmatrix_df, annot=True, fmt="d", cmap="Blues", square=True, cbar=False)
+sns.heatmap(confusionmatrix, annot=True, fmt="d", cmap="Blues", square=True, cbar=False)
 st.pyplot()
+
+#Generation of ROC Curve
+fpr, tpr, _ = roc_curve(y_test, lr.predict_proba(x_test)[:, 1])
+roc_auc = auc(fpr, tpr)
+#Generating an ROC Curve on streamlit
+st.write("ROC Curve:")
+fig, ax = plt.subplots()
+ax.plot(fpr, tpr, color='darkorange', lw=2, label=f'AUC = {roc_auc:.2f}')
+ax.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+ax.set_xlim([0.0, 1.0])
+ax.set_ylim([0.0, 1.05])
+ax.set_xlabel('False Positive Rate')
+ax.set_ylabel('True Positive Rate')
+ax.set_title('Receiver Operating Characteristic (ROC) Curve')
+ax.legend(loc="lower right")
+st.pyplot(fig)
+
 
 # %%
 #Q9. 
