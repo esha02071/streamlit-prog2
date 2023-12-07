@@ -49,10 +49,14 @@ if st.button("Clean Data"):
 # Exploratory Analysis
 # Pairplot to visualize relationships between features and the target
 sns.set(style="ticks")
-#Pairplot is being created
 st.title("Pairplot for Social Media Usage")
-sns.pairplot(ss, hue='sm_li', diag_kind="kde", markers=["o", "s"], palette="husl", height=2.5)
-#Pairplot is being displayed on streamlit
+# Set seaborn style
+sns.set(style="ticks")
+# Add a slider for the height of the pairplot
+pairplot_height = st.slider("Pairplot Height", min_value=1.0, max_value=5.0, value=2.5, step=0.1)
+# Create pairplot
+fig = sns.pairplot(ss, hue='sm_li', diag_kind="kde", markers=["o", "s"], palette="husl", height=pairplot_height)
+# Display the pairplot in Streamlit
 st.pyplot(fig)
 
 # %%
