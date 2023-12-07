@@ -9,13 +9,17 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 s = pd.read_csv('social_media_usage.csv')
-print(s)
-print(s.shape)
+
 #To display Streamlit app
 st.title("Social Media Usage Data")
 #Displaying dataframe
-st.write("Raw data", s)
-#Displaying dimensions of dataframe
+show_raw_data = st.checkbox("Show Raw Data")
+
+if show_raw_data:
+    # Display the raw data
+    st.write("Raw data", s)
+
+# Display dimensions of the dataframe
 st.write("Data shape:", s.shape)
 
 #Q2.
@@ -40,12 +44,12 @@ ss = ss[~ss['educ2'] >= 8]
 #Streamlit App
 st.title("Exploratory Data Analysis")
 
-#Display Cleaned up Data
-#Creating a Button on Streamlit to indicate data cleaning
+# Display Cleaned up Data
+# Creating a Button on Streamlit to indicate data cleaning
 if st.button("Clean Data"): 
-   ss_cleaned = ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li']).copy()
-   st.write("Data Cleaned Successfully!", ss)
- # Display the cleaned data
+    ss_cleaned = ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li']).copy()
+    st.write("Data Cleaned Successfully!")
+    # Display the cleaned data
     st.write(ss_cleaned)
 else:
     st.write("Click the 'Clean Data' button to perform the cleaning operation.")
