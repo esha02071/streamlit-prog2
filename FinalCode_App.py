@@ -35,7 +35,7 @@ ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age', 'sm_li']].copy()
 ss = ss[~ss['age']>=98]
 ss = ss[~ss['educ2'] >= 8]
 # Dropping any missing values from the "ss" dataframe
-ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
+ss= ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
 
 #Streamlit App
 st.title("Exploratory Data Analysis")
@@ -43,7 +43,7 @@ st.title("Exploratory Data Analysis")
 #Display Cleaned up Data
 #Creating a Button on Streamlit to indicate data cleaning
 if st.button("Clean Data"): 
-   ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
+  s['sm_li'] = clean_sm(s['web1h'])
 st.write("Data Cleaned Successfully!", ss)
 
 # Exploratory Analysis
