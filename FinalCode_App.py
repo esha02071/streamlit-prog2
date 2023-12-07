@@ -13,7 +13,7 @@ s = pd.read_csv('social_media_usage.csv')
 #To display Streamlit app
 st.title("Social Media Usage Data")
 #Displaying dataframe
-show_raw_data = st.checkbox("Show Raw Data")
+show_raw_data = st.toggle("Show Raw Data")
 
 if show_raw_data:
     # Display the raw data
