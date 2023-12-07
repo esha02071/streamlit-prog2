@@ -44,7 +44,7 @@ st.title("Exploratory Data Analysis")
 #Creating a Button on Streamlit to indicate data cleaning
 if st.button("Clean Data"): 
    ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
-    st.write("Data Cleaned Successfully!", s)
+st.write("Data Cleaned Successfully!", s)
 
 # Exploratory Analysis
 # Pairplot to visualize relationships between features and the target
