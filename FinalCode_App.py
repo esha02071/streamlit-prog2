@@ -39,7 +39,7 @@ ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age', 'sm_li']].copy()
 ss = ss[~ss['age']>=98]
 ss = ss[~ss['educ2'] >= 8]
 # Dropping any missing values from the "ss" dataframe
- ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
+ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
 
 #Streamlit App
 st.title("Exploratory Data Analysis")
