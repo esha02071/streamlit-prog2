@@ -43,8 +43,12 @@ st.title("Exploratory Data Analysis")
 #Display Cleaned up Data
 #Creating a Button on Streamlit to indicate data cleaning
 if st.button("Clean Data"): 
-  print(ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True))
-st.write("Data Cleaned Successfully!", ss)
+   ss_cleaned = ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li']).copy()
+   st.write("Data Cleaned Successfully!", ss)
+ # Display the cleaned data
+    st.write(ss_cleaned)
+else:
+    st.write("Click the 'Clean Data' button to perform the cleaning operation.")
 
 # Exploratory Analysis
 # Pairplot to visualize relationships between features and the target
@@ -52,8 +56,6 @@ sns.set(style="ticks")
 st.title("Pairplot for Social Media Usage")
 # Set seaborn style
 sns.set(style="ticks")
-# Add a slider for the height of the pairplot
-#pairplot_height = st.slider("Pairplot Height", min_value=1.0, max_value=5.0, value=2.5, step=0.1)
 # Create pairplot
 fig = sns.pairplot(ss, hue='sm_li', diag_kind="kde", markers=["o", "s"], palette="husl", height= 2.5)
 # Display the pairplot in Streamlit
