@@ -210,7 +210,7 @@ age = st.number_input("Age:", min_value=1, max_value=None, step=1)
 
 # Display the defined features
 st.title("User Profile:")
-st.write(f"Income: {income_mapping}")
+st.write(f"Income: {selected_income_category}")
 st.write(f"Education Level: {education}")
 st.write(f"Is a Parent: {parent_status}")
 st.write(f"Is Married: {marital_status}")
@@ -242,7 +242,7 @@ if age > 98:
  # Optionally, you can add more details about the user's age
 #st.write(f"Your Age: {user_age}")
 # Convert the defined features into a numpy array
-user_features = np.array([income, education, int(parent_status), int(marital_status), gender == "Female", age]).reshape(1, -1)
+user_features = np.array([income_mapping, education, int(parent_status), int(marital_status), gender == "Female", age]).reshape(1, -1)
 
 # Probability Prediction
 probabilities_user = lr.predict_proba(user_features)[:, 1]
