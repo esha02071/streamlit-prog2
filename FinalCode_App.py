@@ -192,7 +192,28 @@ st.write(f"Age: {age}")
 
 if age > 98:
     st.error("Error: Age cannot be over 98.")
+    st.title("Age Distribution")
+
+    # Plot the age distribution
+    fig, ax = plt.subplots()
+    sns.scatterplot(x=range(len(ages)), y=ages, color='blue', label='Ages')
     
+    # Highlight the user's age on the plot
+    ax.scatter(x=[len(ages)//2], y=[user_age], color='red', marker='o', label='Your Age')
+    
+    # Set labels and title
+    ax.set_xlabel("User Index")
+    ax.set_ylabel("Age")
+    ax.set_title("Distribution of Ages and Your Age")
+
+    # Display legend
+    ax.legend()
+
+    # Display the plot in Streamlit
+    st.pyplot(fig)
+
+    # Optionally, you can add more details about the user's age
+    st.write(f"Your Age: {user_age}")
 # Convert the defined features into a numpy array
 user_features = np.array([income, education, int(parent_status), int(marital_status), gender == "Female", age]).reshape(1, -1)
 
