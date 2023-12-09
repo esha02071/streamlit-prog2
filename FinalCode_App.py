@@ -118,9 +118,9 @@ print(accuracyscore)
 #Confusion Matrix generation 
 confusionmatrix = confusion_matrix(y_test, y_predicted)
 
-st.write("Confusion Matrix:")
-sns.heatmap(confusionmatrix, annot=True, fmt="d", cmap="Blues", square=True, cbar=False)
-st.pyplot()
+#st.write("Confusion Matrix:")
+#sns.heatmap(confusionmatrix, annot=True, fmt="d", cmap="Blues", square=True, cbar=False)
+#st.pyplot()
 
 # %%
 #Q8. Creating confusion matrix  as a dataframe
@@ -130,20 +130,20 @@ confusionmatrix_df = pd.DataFrame(confusionmatrix, columns = ['Predicted 0', 'Pr
 
 
 #Generation of ROC Curve
-fpr, tpr, _ = roc_curve(y_test, lr.predict_proba(x_test)[:, 1])
-roc_auc = auc(fpr, tpr)
+#fpr, tpr, _ = roc_curve(y_test, lr.predict_proba(x_test)[:, 1])
+#roc_auc = auc(fpr, tpr)
 #Generating an ROC Curve on streamlit
-st.write("ROC Curve:")
-fig, ax = plt.subplots()
-ax.plot(fpr, tpr, color='darkorange', lw=2, label=f'AUC = {roc_auc:.2f}')
-ax.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-ax.set_xlim([0.0, 1.0])
-ax.set_ylim([0.0, 1.05])
-ax.set_xlabel('False Positive Rate')
-ax.set_ylabel('True Positive Rate')
-ax.set_title('Receiver Operating Characteristic (ROC) Curve')
-ax.legend(loc="lower right")
-st.pyplot(fig)
+#st.write("ROC Curve:")
+#fig, ax = plt.subplots()
+#ax.plot(fpr, tpr, color='darkorange', lw=2, label=f'AUC = {roc_auc:.2f}')
+#ax.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+#ax.set_xlim([0.0, 1.0])
+#ax.set_ylim([0.0, 1.05])
+#ax.set_xlabel('False Positive Rate')
+#ax.set_ylabel('True Positive Rate')
+#ax.set_title('Receiver Operating Characteristic (ROC) Curve')
+#ax.legend(loc="lower right")
+#st.pyplot(fig)
 
 
 # %%
@@ -159,8 +159,8 @@ f1_score = 2 * (precision * recall) / (precision + recall)
 precision, recall, _ = precision_recall_curve(y_test, lr.predict_proba(x_test)[:, 1])
 
 # Create an interactive precision-recall curve using Plotly
-fig = px.line(x=recall, y=precision, labels={"x": "Recall", "y": "Precision"}, title="Precision-Recall Curve")
-st.plotly_chart(fig)
+#fig = px.line(x=recall, y=precision, labels={"x": "Recall", "y": "Precision"}, title="Precision-Recall Curve")
+#st.plotly_chart(fig)
 # %%
 
 #Q10.
@@ -173,14 +173,14 @@ features_person2 = [8, 7, 0, 1, 1, 82]
 #Reshape features to a 2D array
 features_person1 = np.array(features_person1).reshape(1, -1)
 features_person2 = np.array(features_person2).reshape(1, -1)
-st.title("Feature Visualization for Two Individuals")
+#st.title("Feature Visualization for Two Individuals")
 
 # Plot the radar chart
-fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
-ax.fill(angles, df_features_normalized.loc[:, 'Person 1'].values, 'b', alpha=0.1)
-ax.fill(angles, df_features_normalized.loc[:, 'Person 2'].values, 'r', alpha=0.1)
-ax.set_thetagrids(angles[:-1] * 180 / np.pi, feature_names)
-ax.set_title("Feature Comparison")
+#fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
+#ax.fill(angles, df_features_normalized.loc[:, 'Person 1'].values, 'b', alpha=0.1)
+#ax.fill(angles, df_features_normalized.loc[:, 'Person 2'].values, 'r', alpha=0.1)
+#ax.set_thetagrids(angles[:-1] * 180 / np.pi, feature_names)
+#ax.set_title("Feature Comparison")
 
 # Display the radar chart in Streamlit
 st.pyplot(fig)
