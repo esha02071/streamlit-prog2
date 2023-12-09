@@ -179,7 +179,7 @@ education = st.selectbox("Education Level:", options=list(range(1, 8)), format_f
 parent_status = st.checkbox("Is a Parent?")
 marital_status = st.checkbox("Is Married?")
 gender = st.radio("Gender:", options=["Male", "Female"])
-age = st.slider("Age:", min_value=1, max_value=100, step=1)
+age = st.number_input("Age:", min_value=1, max_value=None, step=1)
 
 # Display the defined features
 st.title("User Profile:")
@@ -190,6 +190,9 @@ st.write(f"Is Married: {marital_status}")
 st.write(f"Gender: {gender}")
 st.write(f"Age: {age}")
 
+if age > 98:
+    st.error("Error: Age cannot be over 98.")
+    
 # Convert the defined features into a numpy array
 user_features = np.array([income, education, int(parent_status), int(marital_status), gender == "Female", age]).reshape(1, -1)
 
