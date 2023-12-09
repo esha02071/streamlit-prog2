@@ -210,7 +210,7 @@ age = st.number_input("Age:", min_value=1, max_value=None, step=1)
 
 # Display the defined features
 st.title("User Profile:")
-st.write(f"Income: {selected_income_category}")
+#st.write(f"Income: {selected_income_category}")
 st.write(f"Education Level: {education}")
 st.write(f"Is a Parent: {parent_status}")
 st.write(f"Is Married: {marital_status}")
