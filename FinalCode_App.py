@@ -161,7 +161,8 @@ probabilities_person2 = lr.predict_proba(features_person2)[:, 1]
 # Display probability predictions
 #st.write("Probability Prediction for Person 1:", probabilities_person1)
 #st.write("Probability Prediction for Person 2:", probabilities_person2)
-income_category_options = [
+
+    income_category_options = [
     "Less than $10,000",
     "10 to under $20,000",
     "20 to under $30,000",
@@ -172,7 +173,7 @@ income_category_options = [
     "100 to under $150,000",
     "$150,000 or more"
 
-income_mapping = {
+    income_mapping = {
     "Less than $10,000": 1,
     "10 to under $20,000": 2,
     "20 to under $30,000": 3,
@@ -184,7 +185,7 @@ income_mapping = {
     "$150,000 or more": 9
 }
     
-education_labels = {
+    education_labels = {
     1: "Elementary School",
     2: "Middle School",
     3: "High School",
