@@ -239,3 +239,14 @@ st.title("Probability Prediction for User")
 st.write("Probability Prediction for User:", probabilities_user)
 
 
+# Set a probability threshold (you can adjust this value)
+threshold = 0.5
+
+# Determine the user's classification based on the threshold
+user_classification = "LinkedIn User" if probabilities_user > threshold else "Non-LinkedIn User"
+
+# Streamlit app
+st.title("User Classification")
+
+# Display the user's classification
+st.write("User Classification:", user_classification)
