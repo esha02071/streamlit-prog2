@@ -68,15 +68,15 @@ else:
 # Q4. Creating a Target vector(y) and a feature set(x)
 y = ss['sm_li']  # Target variable is whether the individual uses Linkedin
 x = ss.drop('sm_li', axis=1)
-st.title("Target Vector and Feature Set")
+#st.title("Target Vector and Feature Set")
 
 # Display the Target vector
-st.write("Target Vector (y) Shape:", y.shape)
-st.write("Target Vector (y) Head:", y.head())
+#st.write("Target Vector (y) Shape:", y.shape)
+#st.write("Target Vector (y) Head:", y.head())
 
 # Display the Feature Set
-st.write("Feature Set (x) Shape:", x.shape)
-st.write("Feature Set (x) Head:", x.head())
+#st.write("Feature Set (x) Shape:", x.shape)
+#st.write("Feature Set (x) Head:", x.head())
 
 # %%
 #Q5. Splitting data into training and testing sets
