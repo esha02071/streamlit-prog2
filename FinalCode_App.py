@@ -84,10 +84,10 @@ from sklearn.model_selection import train_test_split
 x_train,x_test,y_train, y_test = train_test_split(x,y, test_size = 0.2, random_state = 50)
 st.title("Train-Testing Data Split")
 # Display the shapes of the split datasets
-st.write("Shape of x_train:", x_train.shape)
-st.write("Shape of x_test:", x_test.shape)
-st.write("Shape of y_train:", y_train.shape)
-st.write("Shape of y_test:", y_test.shape)
+#st.write("Shape of x_train:", x_train.shape)
+#st.write("Shape of x_test:", x_test.shape)
+#st.write("Shape of y_train:", y_train.shape)
+#st.write("Shape of y_test:", y_test.shape)
 
 # %%
 #Q6.
@@ -245,8 +245,5 @@ threshold = 0.5
 # Determine the user's classification based on the threshold
 user_classification = "LinkedIn User" if probabilities_user > threshold else "Non-LinkedIn User"
 
-# Streamlit app
-st.title("User Classification")
-
 # Display the user's classification
-st.write("User Classification:", user_classification)
+st.write("User Is A:", user_classification)
