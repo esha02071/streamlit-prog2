@@ -210,7 +210,7 @@ age = st.number_input("Age:", min_value=1, max_value=None, step=1)
 
 # Display the defined features
 st.title("User Profile:")
-st.write(f"Income: {income}")
+st.write(f"Income: {income_mapping}")
 st.write(f"Education Level: {education}")
 st.write(f"Is a Parent: {parent_status}")
 st.write(f"Is Married: {marital_status}")
@@ -222,25 +222,25 @@ if age > 98:
     st.title("Age Distribution")
 
     # Plot the age distribution
-fig, ax = plt.subplots()
-sns.scatterplot(x=range(len(ages)), y=ages, color='blue', label='Ages')
+#fig, ax = plt.subplots()
+#sns.scatterplot(x=range(len(ages)), y=ages, color='blue', label='Ages')
     
 # Highlight the user's age on the plot
-ax.scatter(x=[len(ages)//2], y=[user_age], color='red', marker='o', label='Your Age')
+#ax.scatter(x=[len(ages)//2], y=[user_age], color='red', marker='o', label='Your Age')
     
  # Set labels and title
-ax.set_xlabel("User Index")
-ax.set_ylabel("Age")
-ax.set_title("Distribution of Ages and Your Age")
+#ax.set_xlabel("User Index")
+#ax.set_ylabel("Age")
+#ax.set_title("Distribution of Ages and Your Age")
 
 # Display legend
-ax.legend()
+#ax.legend()
 
 # Display the plot in Streamlit
-st.pyplot(fig)
+#st.pyplot(fig)
 
  # Optionally, you can add more details about the user's age
-st.write(f"Your Age: {user_age}")
+#st.write(f"Your Age: {user_age}")
 # Convert the defined features into a numpy array
 user_features = np.array([income, education, int(parent_status), int(marital_status), gender == "Female", age]).reshape(1, -1)
 
