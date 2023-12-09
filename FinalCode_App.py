@@ -148,14 +148,6 @@ features_person2 = [8, 7, 0, 1, 1, 82]
 #Reshape features to a 2D array
 features_person1 = np.array(features_person1).reshape(1, -1)
 features_person2 = np.array(features_person2).reshape(1, -1)
-#st.title("Feature Visualization for Two Individuals")
-
-# Plot the radar chart
-#fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
-#ax.fill(angles, df_features_normalized.loc[:, 'Person 1'].values, 'b', alpha=0.1)
-#ax.fill(angles, df_features_normalized.loc[:, 'Person 2'].values, 'r', alpha=0.1)
-#ax.set_thetagrids(angles[:-1] * 180 / np.pi, feature_names)
-#ax.set_title("Feature Comparison")
 
 # Display the radar chart in Streamlit
 #Probability Prediction
@@ -169,6 +161,36 @@ st.title("Probability Predictions for Social Media Usage")
 st.write("Probability Prediction for Person 1:", probabilities_person1)
 st.write("Probability Prediction for Person 2:", probabilities_person2)
 
+# Streamlit App
+st.title("Feature Definition")
 
+# Allow users to input their own features
+income = st.slider("Income:", min_value=0, max_value=10, step=1)
+education = st.slider("Education Level (1-7):", min_value=1, max_value=7, step=1)
+parent_status = st.checkbox("Is a Parent?")
+marital_status = st.checkbox("Is Married?")
+gender = st.radio("Gender:", options=["Male", "Female"])
+age = st.slider("Age:", min_value=1, max_value=100, step=1)
+
+# Display the defined features
+st.title("Defined Features:")
+st.write(f"Income: {income}")
+st.write(f"Education Level: {education}")
+st.write(f"Is a Parent: {parent_status}")
+st.write(f"Is Married: {marital_status}")
+st.write(f"Gender: {gender}")
+st.write(f"Age: {age}")
+
+# Convert the defined features into a numpy array
+user_features = np.array([income, education, int(parent_status), int(marital_status), gender == "Female", age]).reshape(1, -1)
+
+# Probability Prediction
+probabilities_user = lr.predict_proba(user_features)[:, 1]
+
+# Streamlit app
+st.title("Probability Prediction for User")
+
+# Display probability prediction for the user
+st.write("Probability Prediction for User:", probabilities_user)
 
 
