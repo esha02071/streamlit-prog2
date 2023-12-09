@@ -155,25 +155,34 @@ probabilities_person1 = lr.predict_proba(features_person1)[:, 1]
 probabilities_person2 = lr.predict_proba(features_person2)[:, 1]
 
 # Streamlit app
-st.title("Probability Predictions for Social Media Usage")
+#st.title("Probability Predictions for Social Media Usage")
 
 # Display probability predictions
-st.write("Probability Prediction for Person 1:", probabilities_person1)
-st.write("Probability Prediction for Person 2:", probabilities_person2)
+#st.write("Probability Prediction for Person 1:", probabilities_person1)
+#st.write("Probability Prediction for Person 2:", probabilities_person2)
 
+education_labels = {
+    1: "Elementary School",
+    2: "Middle School",
+    3: "High School",
+    4: "Associate's Degree",
+    5: "Bachelor's Degree",
+    6: "Master's Degree",
+    7: "Doctorate"
+}
 # Streamlit App
 st.title("Feature Definition")
 
 # Allow users to input their own features
 income = st.slider("Income:", min_value=0, max_value=10, step=1)
-education = st.slider("Education Level (1-7):", min_value=1, max_value=7, step=1)
+education = st.selectbox("Education Level:", options=list(range(1, 8)), format_func=lambda x: education_labels[x])
 parent_status = st.checkbox("Is a Parent?")
 marital_status = st.checkbox("Is Married?")
 gender = st.radio("Gender:", options=["Male", "Female"])
 age = st.slider("Age:", min_value=1, max_value=100, step=1)
 
 # Display the defined features
-st.title("Defined Features:")
+st.title("User Profile:")
 st.write(f"Income: {income}")
 st.write(f"Education Level: {education}")
 st.write(f"Is a Parent: {parent_status}")
