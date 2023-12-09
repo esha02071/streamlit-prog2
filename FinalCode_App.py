@@ -149,6 +149,7 @@ features_person2 = [8, 7, 0, 1, 1, 82]
 features_person1 = np.array(features_person1).reshape(1, -1)
 features_person2 = np.array(features_person2).reshape(1, -1)
 
+
 # Display the radar chart in Streamlit
 #Probability Prediction
 probabilities_person1 = lr.predict_proba(features_person1)[:, 1]
@@ -160,7 +161,17 @@ probabilities_person2 = lr.predict_proba(features_person2)[:, 1]
 # Display probability predictions
 #st.write("Probability Prediction for Person 1:", probabilities_person1)
 #st.write("Probability Prediction for Person 2:", probabilities_person2)
-
+income_category_options = [
+    "Less than $10,000",
+    "10 to under $20,000",
+    "20 to under $30,000",
+    "30 to under $40,000",
+    "40 to under $50,000",
+    "50 to under $75,000",
+    "75 to under $100,000",
+    "100 to under $150,000",
+    "$150,000 or more"
+    
 education_labels = {
     1: "Elementary School",
     2: "Middle School",
@@ -174,12 +185,25 @@ education_labels = {
 st.title("Feature Definition")
 
 # Allow users to input their own features
-income = st.slider("Income:", min_value=0, max_value=10, step=1)
+selected_income_category = st.selectbox("Select Income Category", income_category_options)
 education = st.selectbox("Education Level:", options=list(range(1, 8)), format_func=lambda x: education_labels[x])
 parent_status = st.checkbox("Is a Parent?")
 marital_status = st.checkbox("Is Married?")
 gender = st.radio("Gender:", options=["Male", "Female"])
 age = st.number_input("Age:", min_value=1, max_value=None, step=1)
+
+
+income_mapping = {
+    "Less than $10,000": 1,
+    "10 to under $20,000": 2,
+    "20 to under $30,000": 3,
+    "30 to under $40,000": 4,
+    "40 to under $50,000": 5,
+    "50 to under $75,000": 6,
+    "75 to under $100,000": 7,
+    "100 to under $150,000": 8,
+    "$150,000 or more": 9
+}
 
 # Display the defined features
 st.title("User Profile:")
@@ -195,25 +219,25 @@ if age > 98:
     st.title("Age Distribution")
 
     # Plot the age distribution
-    fig, ax = plt.subplots()
-    sns.scatterplot(x=range(len(ages)), y=ages, color='blue', label='Ages')
+fig, ax = plt.subplots()
+sns.scatterplot(x=range(len(ages)), y=ages, color='blue', label='Ages')
     
-    # Highlight the user's age on the plot
+# Highlight the user's age on the plot
     ax.scatter(x=[len(ages)//2], y=[user_age], color='red', marker='o', label='Your Age')
     
-    # Set labels and title
-    ax.set_xlabel("User Index")
-    ax.set_ylabel("Age")
-    ax.set_title("Distribution of Ages and Your Age")
+ # Set labels and title
+ ax.set_xlabel("User Index")
+ ax.set_ylabel("Age")
+ ax.set_title("Distribution of Ages and Your Age")
 
-    # Display legend
-    ax.legend()
+# Display legend
+ax.legend()
 
-    # Display the plot in Streamlit
-    st.pyplot(fig)
+# Display the plot in Streamlit
+st.pyplot(fig)
 
-    # Optionally, you can add more details about the user's age
-    st.write(f"Your Age: {user_age}")
+ # Optionally, you can add more details about the user's age
+st.write(f"Your Age: {user_age}")
 # Convert the defined features into a numpy array
 user_features = np.array([income, education, int(parent_status), int(marital_status), gender == "Female", age]).reshape(1, -1)
 
