@@ -220,29 +220,14 @@ st.write(f"Age: {age}")
 if age > 98:
     st.error("Error: Age cannot be over 98.")
     st.title("Age Distribution")
+# Convert selected_income_category to numerical using income_mapping
+income = income_mapping[selected_income_category]
 
-    # Plot the age distribution
-#fig, ax = plt.subplots()
-#sns.scatterplot(x=range(len(ages)), y=ages, color='blue', label='Ages')
-    
-# Highlight the user's age on the plot
-#ax.scatter(x=[len(ages)//2], y=[user_age], color='red', marker='o', label='Your Age')
-    
- # Set labels and title
-#ax.set_xlabel("User Index")
-#ax.set_ylabel("Age")
-#ax.set_title("Distribution of Ages and Your Age")
+# Convert gender to numerical (1 for Female, 0 for Male)
+gender_numeric = 1 if gender == "Female" else 0
 
-# Display legend
-#ax.legend()
-
-# Display the plot in Streamlit
-#st.pyplot(fig)
-
- # Optionally, you can add more details about the user's age
-#st.write(f"Your Age: {user_age}")
-# Convert the defined features into a numpy array
-user_features = np.array([income_mapping, education, int(parent_status), int(marital_status), gender == "Female", age]).reshape(1, -1)
+# Create a numpy array with the user's features
+user_features = np.array([income, education, int(parent_status), int(marital_status), gender_numeric, age]).reshape(1, -1)
 
 # Probability Prediction
 probabilities_user = lr.predict_proba(user_features)[:, 1]
