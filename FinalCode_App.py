@@ -62,8 +62,7 @@ else:
 #sns.set(style="ticks")
 # Create pairplot
 #fig = sns.pairplot(ss, hue='sm_li', diag_kind="kde", markers=["o", "s"], palette="husl", height= 2.5)
-# Display the pairplot in Streamlit
-#st.pyplot(fig)
+
 
 # %%
 # Q4. Creating a Target vector(y) and a feature set(x)
@@ -159,7 +158,6 @@ features_person2 = np.array(features_person2).reshape(1, -1)
 #ax.set_title("Feature Comparison")
 
 # Display the radar chart in Streamlit
-st.pyplot(fig)
 #Probability Prediction
 probabilities_person1 = lr.predict_proba(features_person1)[:, 1]
 probabilities_person2 = lr.predict_proba(features_person2)[:, 1]
