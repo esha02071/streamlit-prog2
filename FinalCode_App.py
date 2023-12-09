@@ -171,27 +171,6 @@ income_category_options = [
     "75 to under $100,000",
     "100 to under $150,000",
     "$150,000 or more"
-    
-education_labels = {
-    1: "Elementary School",
-    2: "Middle School",
-    3: "High School",
-    4: "Associate's Degree",
-    5: "Bachelor's Degree",
-    6: "Master's Degree",
-    7: "Doctorate"
-}
-# Streamlit App
-st.title("Feature Definition")
-
-# Allow users to input their own features
-selected_income_category = st.selectbox("Select Income Category", income_category_options)
-education = st.selectbox("Education Level:", options=list(range(1, 8)), format_func=lambda x: education_labels[x])
-parent_status = st.checkbox("Is a Parent?")
-marital_status = st.checkbox("Is Married?")
-gender = st.radio("Gender:", options=["Male", "Female"])
-age = st.number_input("Age:", min_value=1, max_value=None, step=1)
-
 
 income_mapping = {
     "Less than $10,000": 1,
@@ -204,6 +183,28 @@ income_mapping = {
     "100 to under $150,000": 8,
     "$150,000 or more": 9
 }
+    
+education_labels = {
+    1: "Elementary School",
+    2: "Middle School",
+    3: "High School",
+    4: "Associate's Degree",
+    5: "Bachelor's Degree",
+    6: "Master's Degree",
+    7: "Doctorate"
+}
+
+# Streamlit App
+st.title("Feature Definition")
+
+# Allow users to input their own features
+selected_income_category = st.selectbox("Select Income Category", income_category_options)
+education = st.selectbox("Education Level:", options=list(range(1, 8)), format_func=lambda x: education_labels[x])
+parent_status = st.checkbox("Is a Parent?")
+marital_status = st.checkbox("Is Married?")
+gender = st.radio("Gender:", options=["Male", "Female"])
+age = st.number_input("Age:", min_value=1, max_value=None, step=1)
+
 
 # Display the defined features
 st.title("User Profile:")
