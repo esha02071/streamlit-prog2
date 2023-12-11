@@ -13,14 +13,14 @@ s = pd.read_csv('social_media_usage.csv')
 #To display Streamlit app
 st.title("Social Media Usage Data")
 #Displaying dataframe
-show_raw_data = st.toggle("Show Raw Data")
+#show_raw_data = st.toggle("Show Raw Data")
 
 if show_raw_data:
     # Display the raw data
-    st.write("Raw data", s)
+   # st.write("Raw data", s)
 
 # Display dimensions of the dataframe
-st.write("Data shape:", s.shape)
+#st.write("Data shape:", s.shape)
 
 #Q2.
 def clean_sm(x):
@@ -42,17 +42,17 @@ ss = ss[~((ss['age'] > 98) | (ss['educ2'] >= 8))]
 ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
 
 #Streamlit App
-st.title("Exploratory Data Analysis")
+#st.title("Exploratory Data Analysis")
 
 # Display Cleaned up Data
 # Creating a Button on Streamlit to indicate data cleaning
 if st.button("Clean Data"): 
     ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li']).copy()
-    st.write("Data Cleaned Successfully!")
+   # st.write("Data Cleaned Successfully!")
     # Display the cleaned data
-    st.dataframe(ss)
+   # st.dataframe(ss)
 else:
-    st.write("Click the 'Clean Data' button to perform the cleaning operation.")
+   # st.write("Click the 'Clean Data' button to perform the cleaning operation.")
 
 # Exploratory Analysis
 # Pairplot to visualize relationships between features and the target
@@ -103,11 +103,11 @@ classificationreport = classification_report(y_test, y_predicted) #Yields a clas
 
 
 # Logistic Regression Model Results in Streamlit App
-st.title("Logistic Regression Model Evaluation with Training Data")
-st.write("Logistic Regression Model Results:")
-st.write(f"Accuracy: {accuracy:.2f}")
-st.write("Classification Report:")
-st.text(classificationreport)
+#st.title("Logistic Regression Model Evaluation with Training Data")
+#st.write("Logistic Regression Model Results:")
+#st.write(f"Accuracy: {accuracy:.2f}")
+#st.write("Classification Report:")
+#st.text(classificationreport)
 
 # %%
 #Q7. Model evaluation with testing data
