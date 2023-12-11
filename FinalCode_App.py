@@ -25,7 +25,7 @@ if show_raw_data:
 #Q2.
 def clean_sm(x):
     return np.where(x==1,1,0)
-s['sm_li'] = clean_sm(s['web1h'])    #Replacing existing column with the actual column sm_li
+    s['sm_li'] = clean_sm(s['web1h'])    #Replacing existing column with the actual column sm_li
 
 #Q3.
 import os
