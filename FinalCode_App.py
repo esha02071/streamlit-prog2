@@ -11,7 +11,7 @@ import numpy as np
 s = pd.read_csv('social_media_usage.csv')
 
 #To display Streamlit app
-st.title("Social Media Usage Data - Are You a LinkedIn User?")
+st.title("Social Media Predictor - Are You a LinkedIn User?")
 #Displaying dataframe
 
 #Q2.
