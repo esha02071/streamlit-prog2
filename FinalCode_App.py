@@ -17,16 +17,16 @@ st.title("Social Media Usage Data")
 
 if show_raw_data:
     # Display the raw data
-   # st.write("Raw data", s)
+   #st.write("Raw data", s)
 
 # Display dimensions of the dataframe
 #st.write("Data shape:", s.shape)
 
 #Q2.
-def clean_sm(x):
-    return np.where(x==1,1,0)
+#def clean_sm(x):
+    #return np.where(x==1,1,0)
     
-s['sm_li'] = clean_sm(s['web1h'])    #Replacing existing column with the actual column sm_li
+#s['sm_li'] = clean_sm(s['web1h'])    #Replacing existing column with the actual column sm_li
 
 #Q3.
 import os
