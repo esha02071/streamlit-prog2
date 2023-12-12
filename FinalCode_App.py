@@ -202,7 +202,7 @@ age = st.number_input("Enter your Age:", min_value=1, max_value=None, step=1)
 
 
 # Display the defined features
-if st.toggle("Click to view your Profile!"):
+if st.toggle("View Your Profile Here!"):
     st.write(f"Income Category: {selected_income_category}")
     st.write(f"Education Level: {education_labels[education]}")
     st.write(f"Parental Status: {parent_status}")
@@ -226,7 +226,7 @@ user_features = np.array([income, education, int(parent_status), int(marital_sta
 probabilities_user = lr.predict_proba(user_features)[:, 1]
 
 # Streamlit app
-st.title("Probability Prediction for User")
+st.title("Your User Prediction")
 
 # Display probability prediction for the user
 st.write("Probability Prediction for User:", probabilities_user)
@@ -238,5 +238,8 @@ threshold = 0.5
 # Determine the user's classification based on the threshold
 user_classification = "LinkedIn User" if probabilities_user > threshold else "Non-LinkedIn User"
 
-# Display the user's classification
-st.write("You are a:", user_classification, "!")
+#Displaying User Classification
+if user_classification == "LinkedIn User":
+    st.success("👍 You are a LinkedIn User!")
+else:
+    st.error("👎 You are not a LinkedIn User.")
