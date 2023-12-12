@@ -202,13 +202,13 @@ age = st.number_input("Enter your Age:", min_value=1, max_value=None, step=1)
 
 
 # Display the defined features
-st.title("Here is your Profile:")
-st.write(f"Income Category: {selected_income_category}")
-st.write(f"Education Level: {education_labels[education]}")
-st.write(f"Parental Status: {parent_status}")
-st.write(f"Is Marital Status: {marital_status}")
-st.write(f"Gender: {gender}")
-st.write(f"Age: {age}")
+if st.button("Click to see your Profile!")
+    st.write(f"Income Category: {selected_income_category}")
+    st.write(f"Education Level: {education_labels[education]}")
+    st.write(f"Parental Status: {parent_status}")
+    st.write(f"Is Marital Status: {marital_status}")
+    st.write(f"Gender: {gender}")
+    st.write(f"Age: {age}")
 
 if age > 98:
     st.error("Error: Age cannot be over 98.")
