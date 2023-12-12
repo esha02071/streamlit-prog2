@@ -11,11 +11,8 @@ import numpy as np
 s = pd.read_csv('social_media_usage.csv')
 
 #To display Streamlit app
-st.title("Social Media Usage Data")
+st.title("Social Media Usage Data - Are You a LinkedIn User?")
 #Displaying dataframe
-
-# Display dimensions of the dataframe
-st.write("Data shape:", s.shape)
 
 #Q2.
 def clean_sm(x):
@@ -24,31 +21,31 @@ def clean_sm(x):
 s['sm_li'] = clean_sm(s['web1h'])    #Replacing existing column with the actual column sm_li
 
 #Q3.
-import os
-import matplotlib.pyplot as plt
-import seaborn as sns
+#import os
+#import matplotlib.pyplot as plt
+#import seaborn as sns
 
 #copy of dataframe
-ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age', 'sm_li']].copy()
+#ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age', 'sm_li']].copy()
 
 
 #numeric values to drop for age and education level
-ss = ss[~((ss['age'] > 98) | (ss['educ2'] >= 8))]
+#ss = ss[~((ss['age'] > 98) | (ss['educ2'] >= 8))]
 # Dropping any missing values from the "ss" dataframe
-ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
+#ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
 
 #Streamlit App
-st.title("Exploratory Data Analysis")
+#st.title("Exploratory Data Analysis")
 
 # Display Cleaned up Data
 # Creating a Button on Streamlit to indicate data cleaning
-if st.button("Clean Data"): 
-    ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li']).copy()
-    st.write("Data Cleaned Successfully!")
+#if st.button("Clean Data"): 
+   # ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li']).copy()
+   # st.write("Data Cleaned Successfully!")
     # Display the cleaned data
-    st.dataframe(ss)
-else:
-   st.write("Click the 'Clean Data' button to perform the cleaning operation.")
+   # st.dataframe(ss)
+#else:
+  # st.write("Click the 'Clean Data' button to perform the cleaning operation.")
 
 # Exploratory Analysis
 # Pairplot to visualize relationships between features and the target
