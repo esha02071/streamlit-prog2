@@ -227,13 +227,13 @@ user_classification = "LinkedIn User" if probabilities_user > threshold else "No
 st.title("Your User Prediction")
 
 # Display probability prediction for the user
-if st.button("Chance of You Being a LinkedIn User:"):
-    st.write(probabilities_user*100, "%")    
+if st.button("Probability of You Being a LinkedIn User:"):
+    st.write(probabilities_user)    
 #Displaying User Classification
-if user_classification == "LinkedIn User":
-    st.success("👍 You are a LinkedIn User!")
-else:
-    st.error("👎 You are not a LinkedIn User.")
+    if user_classification == "LinkedIn User":
+        st.success("👍 You are a LinkedIn User!")
+    else:
+        st.error("👎 You are not a LinkedIn User.")
 
 
 
