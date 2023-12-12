@@ -95,13 +95,6 @@ accuracy = accuracy_score(y_test, y_predicted) #Yields accuracy score
 classificationreport = classification_report(y_test, y_predicted) #Yields a classification report
 
 
-# Logistic Regression Model Results in Streamlit App
-#st.title("Logistic Regression Model Evaluation with Training Data")
-#st.write("Logistic Regression Model Results:")
-#st.write(f"Accuracy: {accuracy:.2f}")
-#st.write("Classification Report:")
-#st.text(classificationreport)
-
 # %%
 #Q7. Model evaluation with testing data
 from sklearn.metrics import confusion_matrix
@@ -229,7 +222,8 @@ probabilities_user = lr.predict_proba(user_features)[:, 1]
 st.title("Your User Prediction")
 
 # Display probability prediction for the user
-st.write("Chance of You Being a LinkedIn User:", probabilities_user*100)
+if st.button("Chance of You Being a LinkedIn User:"):
+    st.write(probabilities_user*100, "%")
 
 
 # Set a probability threshold (you can adjust this value)
