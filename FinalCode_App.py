@@ -229,7 +229,7 @@ probabilities_user = lr.predict_proba(user_features)[:, 1]
 st.title("Your User Prediction")
 
 # Display probability prediction for the user
-st.write("Probability Prediction for User:", probabilities_user)
+st.write("Chance of You Being a LinkedIn User:", probabilities_user*100)
 
 
 # Set a probability threshold (you can adjust this value)
