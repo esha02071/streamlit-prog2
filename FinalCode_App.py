@@ -43,7 +43,7 @@ ss = ss[~((ss['age'] > 98) | (ss['educ2'] >= 8))]
 ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
 
 #Streamlit App
-st.title("Exploratory Data Analysis")
+#st.title("Exploratory Data Analysis")
 
 # Display Cleaned up Data
 # Creating a Button on Streamlit to indicate data cleaning
@@ -83,7 +83,7 @@ x = ss.drop('sm_li', axis=1)
 #Q5. Splitting data into training and testing sets
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train, y_test = train_test_split(x,y, test_size = 0.2, random_state = 50)
-st.title("Train-Testing Data Split")
+#st.title("Train-Testing Data Split")
 # Display the shapes of the split datasets
 #st.write("Shape of x_train:", x_train.shape)
 #st.write("Shape of x_test:", x_test.shape)
