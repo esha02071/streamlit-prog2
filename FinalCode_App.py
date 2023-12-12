@@ -21,18 +21,18 @@ def clean_sm(x):
 s['sm_li'] = clean_sm(s['web1h'])    #Replacing existing column with the actual column sm_li
 
 #Q3.
-#import os
-#import matplotlib.pyplot as plt
-#import seaborn as sns
+import os
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 #copy of dataframe
-#ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age', 'sm_li']].copy()
+ss = s[['income', 'educ2', 'par', 'marital', 'gender', 'age', 'sm_li']].copy()
 
 
 #numeric values to drop for age and education level
-#ss = ss[~((ss['age'] > 98) | (ss['educ2'] >= 8))]
+ss = ss[~((ss['age'] > 98) | (ss['educ2'] >= 8))]
 # Dropping any missing values from the "ss" dataframe
-#ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
+ss.dropna(subset=['income', 'par', 'marital', 'gender', 'sm_li'], inplace=True)
 
 #Streamlit App
 #st.title("Exploratory Data Analysis")
