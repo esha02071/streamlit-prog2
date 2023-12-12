@@ -247,4 +247,4 @@ threshold = 0.5
 user_classification = "LinkedIn User" if probabilities_user > threshold else "Non-LinkedIn User"
 
 # Display the user's classification
-st.write("User Is A:", user_classification)
+st.write("You are a:", user_classification, "!")
