@@ -218,22 +218,22 @@ user_features = np.array([income, education, int(parent_status), int(marital_sta
 # Probability Prediction
 probabilities_user = lr.predict_proba(user_features)[:, 1]
 
-# Streamlit app
-st.title("Your User Prediction")
-
-# Display probability prediction for the user
-if st.button("Chance of You Being a LinkedIn User:"):
-    st.write(probabilities_user*100, "%")
-
-
 # Set a probability threshold (you can adjust this value)
 threshold = 0.5
 
 # Determine the user's classification based on the threshold
 user_classification = "LinkedIn User" if probabilities_user > threshold else "Non-LinkedIn User"
+# Streamlit app
+st.title("Your User Prediction")
 
+# Display probability prediction for the user
+if st.button("Chance of You Being a LinkedIn User:"):
+    st.write(probabilities_user*100, "%")    
 #Displaying User Classification
 if user_classification == "LinkedIn User":
     st.success("👍 You are a LinkedIn User!")
 else:
     st.error("👎 You are not a LinkedIn User.")
+
+
+
