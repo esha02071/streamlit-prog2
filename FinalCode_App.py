@@ -11,16 +11,16 @@ import numpy as np
 s = pd.read_csv('social_media_usage.csv')
 
 #To display Streamlit app
-#st.title("Social Media Usage Data")
+st.title("Social Media Usage Data")
 #Displaying dataframe
-#show_raw_data = st.toggle("Show Raw Data")
+show_raw_data = st.toggle("Show Raw Data")
 
 if show_raw_data:
     # Display the raw data
-   #st.write("Raw data", s)
+   st.write("Raw data", s)
 
 # Display dimensions of the dataframe
-#st.write("Data shape:", s.shape)
+st.write("Data shape:", s.shape)
 
 #Q2.
 def clean_sm(x):
