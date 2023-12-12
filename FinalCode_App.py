@@ -198,23 +198,23 @@ education_labels = {
 }
 
 # Streamlit App
-st.title("Feature Definition")
+st.title("Choose the following Options!")
 
 # Allow users to input their own features
-selected_income_category = st.selectbox("Select Income Category", income_category_options)
-education = st.selectbox("Education Level:", options=list(range(1, 8)), format_func=lambda x: education_labels[x])
-parent_status = st.checkbox("Is a Parent?")
-marital_status = st.checkbox("Is Married?")
-gender = st.radio("Gender:", options=["Male", "Female"])
-age = st.number_input("Age:", min_value=1, max_value=None, step=1)
+selected_income_category = st.selectbox("What is your Income Category", income_category_options)
+education = st.selectbox("Select your Highest Level of Education:", options=list(range(1, 8)), format_func=lambda x: education_labels[x])
+parent_status = st.checkbox("Are you a Parent?")
+marital_status = st.checkbox("Are you Married?")
+gender = st.radio("What is your Gender?:", options=["Male", "Female"])
+age = st.number_input("Enter your Age:", min_value=1, max_value=None, step=1)
 
 
 # Display the defined features
-st.title("User Profile:")
+st.title("Here is your Profile:")
 st.write(f"Income Category: {selected_income_category}")
 st.write(f"Education Level: {education_labels[education]}")
-st.write(f"Is a Parent: {parent_status}")
-st.write(f"Is Married: {marital_status}")
+st.write(f"Parental Status: {parent_status}")
+st.write(f"Is Marital Status: {marital_status}")
 st.write(f"Gender: {gender}")
 st.write(f"Age: {age}")
 
