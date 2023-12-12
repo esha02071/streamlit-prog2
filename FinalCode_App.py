@@ -202,7 +202,7 @@ age = st.number_input("Enter your Age:", min_value=1, max_value=None, step=1)
 
 
 # Display the defined features
-if st.button("Click to see your Profile!")
+if st.button("Click to see your Profile!"):
     st.write(f"Income Category: {selected_income_category}")
     st.write(f"Education Level: {education_labels[education]}")
     st.write(f"Parental Status: {parent_status}")
